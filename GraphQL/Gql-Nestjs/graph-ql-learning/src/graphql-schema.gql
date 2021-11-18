@@ -10,12 +10,23 @@ type Employee {
   city: String
 }
 
+type Task {
+  id: Float!
+  taskName: String!
+  code: Float!
+}
+
 type Query {
   getAllEmployees: [Employee!]!
+  getAllTask: [Task!]!
+  task(id: Int!): Task!
 }
 
 type Mutation {
   createEmployee(employee: CreateEmployeeDto!): Employee!
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  removeTask(id: Int!): Task!
 }
 
 input CreateEmployeeDto {
@@ -23,4 +34,15 @@ input CreateEmployeeDto {
   lastName: String!
   designation: String!
   city: String!
+}
+
+input CreateTaskInput {
+  taskName: String!
+  code: Float!
+}
+
+input UpdateTaskInput {
+  id: Float!
+  taskName: String!
+  code: Float!
 }
