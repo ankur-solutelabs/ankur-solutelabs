@@ -30,6 +30,9 @@ export class TaskService {
     task.id = id;
     return this.taskRepository.save(task)
   }
+
+  //for deleting the task from db 
+  
   async remove(id: number) {
     let rmtask = this.findOne(id)
     if (rmtask) {
