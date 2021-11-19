@@ -15,4 +15,7 @@ export class CreateEmployeeDto {
     @Field()
     city: string
 
+    @Field()
+    taskId: number
+
 }
