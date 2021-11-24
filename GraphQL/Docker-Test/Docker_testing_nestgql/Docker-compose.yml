@@ -9,34 +9,34 @@ services:
         
         restart: always
 
-        # enviorment:
-        #     DATABASE_URL : postgres://postgres:ankur.p@solutelabs.com@postgres:3000/postgres
+        # environment:
+        #     DATABASE_URL : postgres://postgres:ankur@123@postgres:5432/postgres
         #     NODE_ENV : development
         #     PORT: 3002
 
         ports: 
-           -  "8000:3002"
+           -  "5000:3002"
 
     graphql-engine:
         image: hasura/graphql-engine:v2.0.1
         ports:
         - "8080:8080"
 
-        environment:
-          HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:ankur.p@solutelabs.com@postgres:3000/postgres
-          HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-          HASURA_GRAPHQL_DEV_MODE: "true"
-          HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+        # environment:
+        #   HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:ankur@123@postgres:5432/postgres
+        #   HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+        #   HASURA_GRAPHQL_DEV_MODE: "true"
+        #   HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
 
 
     postgres:
 
         image: postgres:14.1
         ports:
-            - "5432:3000"
+            - "5001:5432"
 
         environment: 
            POSTGRES_USER : postgres
-           POSTGRES_PASSWORD : ankur.p@solutelabs.com
+           POSTGRES_PASSWORD : ankur@123
            POSTGRES_DB : postgres
 

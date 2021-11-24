@@ -11,6 +11,6 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 8080 5001 5002
 
 CMD ["node", "dist/main"]
