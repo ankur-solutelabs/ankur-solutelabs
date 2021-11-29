@@ -1,0 +1,1 @@
+CREATE TABLE "public"."blog_post" ("id" uuid NOT NULL, "title" text NOT NULL, "content" text NOT NULL, "date" timestamptz NOT NULL DEFAULT now(), "is_published" boolean NOT NULL DEFAULT false, "user_id" text, PRIMARY KEY ("id") );

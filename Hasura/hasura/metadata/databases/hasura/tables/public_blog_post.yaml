@@ -1,0 +1,3 @@
+table:
+  name: blog_post
+  schema: public

@@ -1,0 +1,2 @@
+CREATE TABLE "school"."student" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "rollNo" numeric NOT NULL, "firstName" text NOT NULL, "lastName" text NOT NULL, "email" text NOT NULL, "inClass" text NOT NULL, "teacher_id" uuid, PRIMARY KEY ("id") , FOREIGN KEY ("teacher_id") REFERENCES "school"."teacher"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("rollNo"), UNIQUE ("email"), UNIQUE ("inClass"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

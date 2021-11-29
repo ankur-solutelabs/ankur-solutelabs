@@ -1,0 +1,4 @@
+- "!include school_admin.yaml"
+- "!include school_school.yaml"
+- "!include school_student.yaml"
+- "!include school_teacher.yaml"
