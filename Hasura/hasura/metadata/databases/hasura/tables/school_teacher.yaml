@@ -1,3 +1,15 @@
 table:
   name: teacher
   schema: school
+object_relationships:
+- name: admin
+  using:
+    foreign_key_constraint_on: admin_id
+array_relationships:
+- name: students
+  using:
+    foreign_key_constraint_on:
+      column: teacher_id
+      table:
+        name: student
+        schema: school
