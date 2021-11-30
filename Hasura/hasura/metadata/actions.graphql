@@ -1,0 +1,10 @@
+type Mutation {
+  update (
+    inClass: String!
+  ): Student
+}
+
+type Student {
+  firstName : String!
+}
+

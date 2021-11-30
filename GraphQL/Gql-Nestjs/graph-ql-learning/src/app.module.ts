@@ -11,9 +11,9 @@ import { TaskModule } from './task/task.module';
   TypeOrmModule.forRoot({
     type: "postgres",
     host: "localhost",
-    port: 3000,
+    port: 5432,
     username: "postgres",
-    password: "ankur.p@solutelabs.com",
+    password: "ankur@123",
     entities: ["dist/**/*.entity{.ts,.js}"],
     synchronize: true,
   }),

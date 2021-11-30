@@ -1,6 +1,11 @@
-actions: []
+actions:
+- name: update
+  definition:
+    kind: synchronous
+    handler: http://host.docker.internal:3001/update
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: Student
   scalars: []

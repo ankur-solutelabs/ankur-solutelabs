@@ -1,1 +1,5 @@
-[]
+- name: employeeTask
+  definition:
+    url: http://host.docker.internal:3002/graphql
+    timeout_seconds: 60
+  comment: ""
