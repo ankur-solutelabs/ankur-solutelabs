@@ -11,6 +11,8 @@ app.listen(3001,() => {
 
 const POSTGRES_CONNECTION_STRING = "postgres://postgres:ankur@123@localhost:5432/adminTeacherMgmt"
 
+// const POSTGRES_CONNECTION_STRING = "postgres://postgres:postgrespassword@postgres:5432/postgres"
+
 // function echo(event) {
 //    let responseBody = '';
 //     if (event.op === "INSERT") {

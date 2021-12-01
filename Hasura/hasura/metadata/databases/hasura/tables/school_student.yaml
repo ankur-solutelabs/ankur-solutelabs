@@ -10,13 +10,26 @@ event_triggers:
     enable_manual: false
     insert:
       columns: "*"
-    update:
-      columns:
-      - inClass
-      - lastName
   name: new_student
   retry_conf:
     interval_sec: 10
     num_retries: 0
     timeout_sec: 60
-  webhook: http://host.docker.internal:3001/student
+  webhook: https://hookb.in/QJDWpQOLnEh8mNzzmjzj
+- definition:
+    enable_manual: false
+    update:
+      columns:
+      - inClass
+      - teacher_id
+      - firstName
+      - id
+      - lastName
+      - rollNo
+      - email
+  name: update_student
+  retry_conf:
+    interval_sec: 10
+    num_retries: 0
+    timeout_sec: 60
+  webhook: https://hookb.in/QJDWpQOLnEh8mNzzmjzj
