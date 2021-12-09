@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: posts
-          image: cygnetops/posts-95
+          image: pandey001/posts
 ---
 apiVersion: v1
 kind: Service
