@@ -23,11 +23,11 @@ metadata:
 spec:
   selector:
     app: auth-mongo
-  # ports:
-  #   - name: db
-  #     protocol: TCP
-  #     port: 27017
-  #     targetPort: 27017
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
 
-data:
-  baseUrl: mongodb+srv://ankur:ankur123@cluster0.7aqsk.mongodb.net/auth?retryWrites=true&w=majority
+# data:
+#   baseUrl: mongodb+srv://ankur:ankur123@cluster0.7aqsk.mongodb.net/auth?retryWrites=true&w=majority

@@ -8,7 +8,7 @@ const start = async () => {
   }
 
   try {
-    await mongoose.connect('mongodb+srv://ankur:ankur123@cluster0.7aqsk.mongodb.net/auth?retryWrites=true&w=majority')
+    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth')
     console.log('Connected to MongoDb');
   } catch (err) {
     console.error(err);
