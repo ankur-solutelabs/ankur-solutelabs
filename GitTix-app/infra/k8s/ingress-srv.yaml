@@ -10,7 +10,7 @@ spec:
     - host: gittix.com
       http:
         paths:
-          - path: /data/show
+          - path: /api/users/?(.*)
             pathType: Prefix
             backend:
               service:
