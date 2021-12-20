@@ -10,6 +10,7 @@ import { signupRouter } from './routes/signup';
 import { errorHandler, NotFoundError } from '@ankurpandey131/common';
 
 const app = express();
+
 app.set('trust proxy', true);
 app.use(json());
 app.use(

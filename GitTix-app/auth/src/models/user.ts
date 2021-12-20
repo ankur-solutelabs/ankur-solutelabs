@@ -8,6 +8,9 @@ interface UserAttrs {
   password: string;
 }
 
+
+
+
 // An interface that describes the properties
 // that a User Model has
 interface UserModel extends mongoose.Model<UserDoc> {
