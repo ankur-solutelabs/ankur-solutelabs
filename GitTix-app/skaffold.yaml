@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: pandey001/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
     - image: pandey001/tickets
       context: tickets
       docker:
@@ -32,11 +40,19 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: pandey001/client
-      context: client
+    - image: pandey001/expiration
+      context: expiration
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: '**/*.js'
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: pandey001/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
             dest: .
