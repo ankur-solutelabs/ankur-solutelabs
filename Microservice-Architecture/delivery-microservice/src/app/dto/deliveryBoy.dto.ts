@@ -6,6 +6,9 @@ export class DeliveryBoyDto {
   name: string;
 
   @Field()
+  mobileNo: number;
+
+  @Field()
   rating: number;
 
 }

@@ -14,4 +14,8 @@ export class DeliveryDto {
   @Field()
   customerStatus: string;
 
+  @Field()
+  customerMob: number;
+
+
 }
