@@ -1,11 +1,20 @@
 import { BaseEntity } from '../../utility/entity';
 import { Entity, Column } from 'typeorm';
+import { VALUE } from '../../../core/constant'
 
 @Entity('delivery')
 export class deliveryEntity extends BaseEntity {
   @Column('text')
-  name: string;
+  customerName: string;
 
-  @Column('number', { default: 4.5 })
-  rating: number;
+  @Column('text')
+  customerOrder: string;
+
+  @Column('text')
+  customerAddress: string;
+
+  @Column('text', {default:'accepted'})
+  customerStatus: VALUE;
+
+  
 }
