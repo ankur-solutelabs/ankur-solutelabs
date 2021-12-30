@@ -8,6 +8,7 @@ import {INTERNAL_SERVER_ERROR} from '../../core/error';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DeliveryBoyEntity, DeliveryEntity } from './entity';
+import { DeliveryResponse } from '../interface';
 
 @Injectable()
 export class DeliveryService {
@@ -23,13 +24,13 @@ export class DeliveryService {
 
         async Delivery(createDeliveryCustomer: DeliveryDto): Promise<DeliveryEntity> {
          const createCustomer = this.DeliveryRepository.create(createDeliveryCustomer)
-         const saveUser = await this.DeliveryRepository.save(createCustomer);
-        if (!saveUser) {
+         const saveCustomer = await this.DeliveryRepository.save(createCustomer);
+        if (!saveCustomer) {
           throw new InternalServerErrorException(
             INTERNAL_SERVER_ERROR,
           );
         }   
-        return saveUser
+        return saveCustomer
 }
 
         async DeliveryBoy(createDeliveryBoy: DeliveryBoyDto): Promise<DeliveryBoyEntity> {
