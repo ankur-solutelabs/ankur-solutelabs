@@ -1,19 +1,13 @@
 import {
     Injectable,
-    UnauthorizedException,
-    BadRequestException,
     InternalServerErrorException,
-    Inject,
-    Logger,
     NotFoundException,
   } from '@nestjs/common';
 import { DeliveryDto,DeliveryBoyDto } from '../dto';
 import {INTERNAL_SERVER_ERROR} from '../../core/error';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { DeliveryBoyEntity, DeliveryEntity } from './entity';
-import { ClientProxy } from '@nestjs/microservices';
-import { VALUE } from 'src/core/constant';
 
 @Injectable()
 export class DeliveryService {
@@ -28,7 +22,7 @@ export class DeliveryService {
 
 
         async Delivery(createDeliveryCustomer: DeliveryDto): Promise<DeliveryEntity> {
-         const createCustomer = await this.DeliveryRepository.create(createDeliveryCustomer)
+         const createCustomer = this.DeliveryRepository.create(createDeliveryCustomer)
          const saveUser = await this.DeliveryRepository.save(createCustomer);
         if (!saveUser) {
           throw new InternalServerErrorException(
@@ -39,7 +33,7 @@ export class DeliveryService {
 }
 
         async DeliveryBoy(createDeliveryBoy: DeliveryBoyDto): Promise<DeliveryBoyEntity> {
-          const createBoy = await this.DeliveryBoyRepository.create(createDeliveryBoy)
+          const createBoy = this.DeliveryBoyRepository.create(createDeliveryBoy)
           const saveBoy = await this.DeliveryBoyRepository.save(createBoy);
         if (!saveBoy) {
           throw new InternalServerErrorException(
@@ -48,7 +42,49 @@ export class DeliveryService {
         }   
         return saveBoy
         }
+//========================================================================================================//
+    //Delivery Service Customer 
 
-        
+        async findAll() :Promise<DeliveryEntity[]> {
+          return this.DeliveryRepository.find();
+        }
+      
+        async findOne(id: string):Promise<DeliveryEntity> {
+          return this.DeliveryRepository.findOne(id);
+        }
 
+        async getDeliveryBoy(id: string):Promise<DeliveryBoyEntity> {
+          return this.DeliveryBoyRepository.findOne(id)
+      }
+
+//========================================================================================================//
+   // Delivery service Delivery Boy
+     
+      
+        async findAllBoy() :Promise<DeliveryBoyEntity[]> {
+          return this.DeliveryBoyRepository.find({
+            relations: ["delivery"]
+          });
 }
+
+    
+        async findOneBoy(id: string):Promise<DeliveryBoyEntity> {
+        return this.DeliveryBoyRepository.findOne(id,{relations:["delivery"]});
+        }
+    
+        async update(id: string, updateDeliveryBoy: DeliveryBoyDto) {
+          const DBoy:DeliveryBoyEntity = this.DeliveryBoyRepository.create(updateDeliveryBoy)
+          DBoy.id = id;
+          return this.DeliveryBoyRepository.save(DBoy)
+        }
+        async remove(id: string) {
+          let remBoy = this.findOne(id)
+          if (remBoy) {
+            let ret = await this.DeliveryBoyRepository.delete(id)
+            if (ret.affected === 1) {
+              return remBoy;
+            }
+          }
+          throw new NotFoundException(`Record can't find by id ${id}`)
+        }
+ }
