@@ -13,6 +13,7 @@ import { GraphqlService } from './core/config';
 import { AppResolver } from './app.resolver';
 import { CustomExceptionsFilter } from './core/utility';
 import * as ormconfig from './core/config/typeorm';
+import { join } from 'path/posix';
 
 @Module({
   imports: [
@@ -21,6 +22,8 @@ import * as ormconfig from './core/config/typeorm';
       useClass: GraphqlService,
     }),
     TerminusModule,
+    GraphQLModule.forRoot(
+      { autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),}),
   ],
   controllers: [HealthController],
   providers: [

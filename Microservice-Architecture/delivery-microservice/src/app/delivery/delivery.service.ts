@@ -27,22 +27,28 @@ export class DeliveryService {
         ) {}
 
 
-        async Delivery(data: DeliveryDto): Promise<any> {
-        
-            const createCustomer = this.DeliveryRepository.create({
-                // customerName = "ankur",
-                // customerOrder = "dosa",
-                // customerAddress = "gorakhpur",
-                // customerMob = 12345678995,
-                // customerStatus = VALUE.ACCEPTED,
-            });
-        
-            const saveUser = await this.DeliveryRepository.save(createCustomer);
-        
-            if (!saveUser) {
-              throw new InternalServerErrorException(
-                INTERNAL_SERVER_ERROR,
-              );
-            }   
+        async Delivery(createDeliveryCustomer: DeliveryDto): Promise<DeliveryEntity> {
+         const createCustomer = await this.DeliveryRepository.create(createDeliveryCustomer)
+         const saveUser = await this.DeliveryRepository.save(createCustomer);
+        if (!saveUser) {
+          throw new InternalServerErrorException(
+            INTERNAL_SERVER_ERROR,
+          );
+        }   
+        return saveUser
 }
+
+        async DeliveryBoy(createDeliveryBoy: DeliveryBoyDto): Promise<DeliveryBoyEntity> {
+          const createBoy = await this.DeliveryBoyRepository.create(createDeliveryBoy)
+          const saveBoy = await this.DeliveryBoyRepository.save(createBoy);
+        if (!saveBoy) {
+          throw new InternalServerErrorException(
+            INTERNAL_SERVER_ERROR,
+          );
+        }   
+        return saveBoy
+        }
+
+        
+
 }

@@ -16,8 +16,8 @@ export class DeliveryEntity extends BaseEntity {
   @Column('text')
   customerMob: number;
 
-  @Column('text', {default:'accepted'})
-  customerStatus: VALUE;
+  @Column('text')
+  customerStatus: string;
 
   
 }
