@@ -45,11 +45,11 @@ export class DeliveryService {
 //========================================================================================================//
     //Delivery Service Customer 
 
-        async findAll() :Promise<DeliveryEntity[]> {
+        async findAllCustomer() :Promise<DeliveryEntity[]> {
           return this.DeliveryRepository.find();
         }
       
-        async findOne(id: string):Promise<DeliveryEntity> {
+        async findOneCustomer(id: string):Promise<DeliveryEntity> {
           return this.DeliveryRepository.findOne(id);
         }
 
@@ -72,13 +72,14 @@ export class DeliveryService {
         return this.DeliveryBoyRepository.findOne(id,{relations:["delivery"]});
         }
     
-        async update(id: string, updateDeliveryBoy: DeliveryBoyDto) {
+        async updateBoy(id: string, updateDeliveryBoy: DeliveryBoyDto) {
           const DBoy:DeliveryBoyEntity = this.DeliveryBoyRepository.create(updateDeliveryBoy)
           DBoy.id = id;
           return this.DeliveryBoyRepository.save(DBoy)
         }
-        async remove(id: string) {
-          let remBoy = this.findOne(id)
+
+        async removeBoy(id: string) {
+          let remBoy = this.DeliveryBoyRepository.findOne(id)
           if (remBoy) {
             let ret = await this.DeliveryBoyRepository.delete(id)
             if (ret.affected === 1) {
