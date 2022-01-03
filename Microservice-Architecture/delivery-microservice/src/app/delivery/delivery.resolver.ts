@@ -14,8 +14,8 @@ export class DeliveryResolver {
     }
 
     @Mutation(() => DeliveryEntity, { name:"createDelivery" } )
-    createDelivery(@Args('createDelivery') customer:DeliveryDto ) {
-        return this.DeliveryService.createDelivery(customer);
+    async createDelivery(@Args('createDelivery') customer:DeliveryDto ) {
+        return await this.DeliveryService.createDelivery(customer);
     }
 
     @Query(() => DeliveryEntity , { name:"getOneDelivery" }) 
@@ -39,8 +39,8 @@ export class DeliveryBoyResolver {
   }
 
   @Mutation(() => DeliveryBoyEntity,{ name:"createDeliveryBoy" })
-  DeliveryBoy(@Args('DeliveryBoy') createDeliveryBoy: DeliveryBoyDto) {
-    return this.deliveryService.DeliveryBoy(createDeliveryBoy);
+  async DeliveryBoy(@Args('DeliveryBoy') createDeliveryBoy: DeliveryBoyDto) {
+    return await this.deliveryService.createDeliveryBoy(createDeliveryBoy);
   }
 
   @Query(() => DeliveryBoyEntity , { name:"getOneDeliveryBoy" }) 
@@ -49,12 +49,12 @@ export class DeliveryBoyResolver {
 
   }
 
-  @Mutation(() => DeliveryBoyEntity)
+  @Mutation(() => DeliveryBoyEntity, { name:"updateDeliveryBoy" })
   updateBoy(@Args('updateDeliveryBoy') updateDeliveryBoy: DeliveryBoyEntity) {
     return this.deliveryService.updateBoy(updateDeliveryBoy.id,updateDeliveryBoy);
   }
 
-  @Mutation(() => DeliveryBoyEntity)
+  @Mutation(() => DeliveryBoyEntity,{ name:"deleteDeliveryBoy" })
   removeBoy(@Args('id', { type: () => String }) id: string) {
     return this.deliveryService.removeBoy(id);
   }

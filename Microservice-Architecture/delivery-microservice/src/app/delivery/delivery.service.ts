@@ -32,7 +32,7 @@ export class DeliveryService {
         return saveCustomer
 }
 
-        async DeliveryBoy(createDeliveryBoy: DeliveryBoyDto): Promise<DeliveryBoyEntity> {
+        async createDeliveryBoy(createDeliveryBoy: DeliveryBoyDto): Promise<DeliveryBoyEntity> {
           const createBoy = this.DeliveryBoyRepository.create(createDeliveryBoy)
           const saveBoy = await this.DeliveryBoyRepository.save(createBoy);
         if (!saveBoy) {
