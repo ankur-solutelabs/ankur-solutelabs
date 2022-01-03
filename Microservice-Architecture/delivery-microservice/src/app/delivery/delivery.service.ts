@@ -53,9 +53,9 @@ export class DeliveryService {
           return this.DeliveryRepository.findOne(id);
         }
 
-        async getDeliveryBoy(id: string):Promise<DeliveryBoyEntity> {
-          return this.DeliveryBoyRepository.findOne(id)
-      }
+      //   async getDeliveryBoy(id: string):Promise<DeliveryBoyEntity> {
+      //     return this.DeliveryBoyRepository.findOne(id)
+      // }
 
 //========================================================================================================//
    // Delivery service Delivery Boy
