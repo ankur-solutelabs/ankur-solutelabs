@@ -1,7 +1,7 @@
 export interface Delivery {
   customerName: string;
   CustomerAddress: string;
-  customerMobile: string;
+  customerMob: string;
   customerOrder: string;
   customerStatus: string;
 }
@@ -17,7 +17,7 @@ export interface DeliveryBoy {
 export interface DeliveryResponse {
     customerName: string;
     CustomerAddress: string;
-    customerMobile: string;
+    customerMob: string;
     customerOrder: string;
     customerStatus: string;
     DeliveryBoy: {

@@ -1,3 +1,4 @@
+import { Field } from '@nestjs/graphql';
 import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
@@ -21,4 +22,5 @@ export class BaseEntity {
     onUpdate: CURRENT_TIMESTAMP,
   })
   updated_at: Date;
+
 }

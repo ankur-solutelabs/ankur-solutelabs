@@ -1,24 +1,16 @@
-import { Query } from '@nestjs/common';
 import { Args, Mutation, Parent, ResolveField, Resolver } from '@nestjs/graphql';
-import { DeliveryService } from '.';
-import { DeliveryDto } from '../dto';
+import { DeliveryBoyDto, DeliveryDto } from '../dto';
+import { DeliveryService } from './delivery.service';
 import { DeliveryBoyEntity, DeliveryEntity } from './entity';
-import { DeliveryResponse } from '../interface'
 
-@Resolver()
+@Resolver(() => DeliveryEntity)
 export class DeliveryResolver {
 
-    constructor(private DeliveryService: DeliveryService){}
+    constructor(private readonly DeliveryService: DeliveryService){}
 
-    @Mutation(() => DeliveryEntity, {name: "createCustomer"})
-    createCustomer(@Args('delivery') customer:DeliveryDto ) {
-        return this.DeliveryService.Delivery(customer)
-    }
-
-    @ResolveField(() => DeliveryBoyEntity)
-    Delivery(@Parent() customer:DeliveryEntity){
-        return this.DeliveryService.getDeliveryBoy(customer.id)
-
+    @Mutation(() => DeliveryEntity)
+    createDelivery(@Args('createDelivery') customer:DeliveryDto ) {
+        return this.DeliveryService.createDelivery(customer);
     }
 
 }
@@ -28,18 +20,18 @@ export class DeliveryBoyResolver {
   constructor(private readonly deliveryService: DeliveryService) {}
 
   @Mutation(() => DeliveryBoyEntity)
-  createBoy(@Args('createDeliveryBoy') createDeliveryBoy: DeliveryBoyEntity) {
+  DeliveryBoy(@Args('DeliveryBoy') createDeliveryBoy: DeliveryBoyDto) {
     return this.deliveryService.DeliveryBoy(createDeliveryBoy);
   }
 
   @Mutation(() => DeliveryBoyEntity)
   updateBoy(@Args('updateDeliveryBoy') updateDeliveryBoy: DeliveryBoyEntity) {
-    return this.deliveryService.updateBoy(updateDeliveryBoy.id, updateDeliveryBoy);
+    return this.deliveryService.updateBoy(updateDeliveryBoy.id,updateDeliveryBoy);
   }
 
   @Mutation(() => DeliveryBoyEntity)
-  removeBoy(@Args() id) {
-    return this.deliveryService.DeliveryBoy(id);
+  removeBoy(@Args('id', { type: () => String }) id: string) {
+    return this.deliveryService.removeBoy(id);
   }
 }
 

@@ -1,6 +1,5 @@
 import { BaseEntity } from '../../utility/entity';
 import { Entity, Column } from 'typeorm';
-import { VALUE } from '../../../core/constant'
 
 @Entity('delivery')
 export class DeliveryEntity extends BaseEntity {

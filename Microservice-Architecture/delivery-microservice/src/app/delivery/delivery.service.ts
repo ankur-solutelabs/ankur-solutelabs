@@ -8,7 +8,6 @@ import {INTERNAL_SERVER_ERROR} from '../../core/error';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DeliveryBoyEntity, DeliveryEntity } from './entity';
-import { DeliveryResponse } from '../interface';
 
 @Injectable()
 export class DeliveryService {
@@ -22,7 +21,7 @@ export class DeliveryService {
         ) {}
 
 
-        async Delivery(createDeliveryCustomer: DeliveryDto): Promise<DeliveryEntity> {
+        async createDelivery(createDeliveryCustomer: DeliveryDto): Promise<DeliveryEntity> {
          const createCustomer = this.DeliveryRepository.create(createDeliveryCustomer)
          const saveCustomer = await this.DeliveryRepository.save(createCustomer);
         if (!saveCustomer) {
@@ -63,14 +62,12 @@ export class DeliveryService {
      
       
         async findAllBoy() :Promise<DeliveryBoyEntity[]> {
-          return this.DeliveryBoyRepository.find({
-            relations: ["delivery"]
-          });
+          return this.DeliveryBoyRepository.find();
 }
 
     
         async findOneBoy(id: string):Promise<DeliveryBoyEntity> {
-        return this.DeliveryBoyRepository.findOne(id,{relations:["delivery"]});
+        return this.DeliveryBoyRepository.findOne(id);
         }
     
         async updateBoy(id: string, updateDeliveryBoy: DeliveryBoyDto) {

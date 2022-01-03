@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DeliveryBoyResolver, DeliveryResolver, DeliveryService } from '.';
+import { DeliveryBoyResolver, DeliveryResolver } from './delivery.resolver';
+import { DeliveryService } from './delivery.service';
 import { DeliveryBoyEntity, DeliveryEntity } from './entity';
 
 @Module({
@@ -11,9 +12,4 @@ import { DeliveryBoyEntity, DeliveryEntity } from './entity';
     exports: [DeliveryService],
 
 })
-export class DeliveryModule {
-      
-
-
-    
-}
+export class DeliveryModule {}

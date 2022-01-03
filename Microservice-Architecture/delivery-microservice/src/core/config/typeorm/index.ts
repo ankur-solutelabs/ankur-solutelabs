@@ -1,4 +1,3 @@
-import { DeliveryBoyEntity, DeliveryEntity } from '../../../app/delivery/entity';
 import { ConnectionOptions } from 'typeorm';
 import { DATABASE_URL, ENVIRONMENT } from '../../environment';
 
