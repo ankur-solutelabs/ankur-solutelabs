@@ -1,4 +1,4 @@
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import { Field, InputType} from '@nestjs/graphql';
 
 @InputType()
 export class DeliveryDto {
@@ -12,10 +12,9 @@ export class DeliveryDto {
   customerAddress: string;
 
   @Field()
-  customerStatus: string;
-
-  @Field()
   customerMob: number;
 
+  @Field()
+  customerStatus: string;
 
 }

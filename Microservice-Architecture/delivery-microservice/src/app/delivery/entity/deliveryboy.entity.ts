@@ -9,6 +9,6 @@ export class DeliveryBoyEntity extends BaseEntity {
   @Column('text')
   mobileNo: number;
 
-  @Column('text', { default: 4.5 })
+  @Column('text')
   rating: number;
 }

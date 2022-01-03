@@ -1,5 +1,7 @@
 import { BaseEntity } from '../../utility/entity';
 import { Entity, Column } from 'typeorm';
+import { ObjectType } from '@nestjs/graphql';
+
 
 @Entity('delivery')
 export class DeliveryEntity extends BaseEntity {
