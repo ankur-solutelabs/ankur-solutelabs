@@ -1,0 +1,9 @@
+version: 3
+endpoint: http://localhost:8082
+admin_secret: 12345
+metadata_directory: metadata
+actions:
+  kind: synchronous
+  handler_webhook_baseurl: http://localhost:3000
+
+  #handler_webhook_baseurl: http://host.docker.internal:3000
